@@ -37,7 +37,7 @@ export default async function Home() {
         <div className="relative max-w-5xl mx-auto px-6 py-24 sm:py-32">
           <div className="text-center">
             <h1 className="text-5xl sm:text-7xl font-bold text-white mb-6 tracking-tight">
-              My Blog
+              Mehrnaz Blog
             </h1>
             <p className="text-xl sm:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed">
               Thoughts, stories and ideas about technology, design, and life
