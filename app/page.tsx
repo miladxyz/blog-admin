@@ -55,7 +55,7 @@ export default async function Home() {
                 Start creating amazing content in your admin panel!
               </p>
               <a 
-                href="http://localhost:3001" 
+                href="https://admin.mehrdm.me" 
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:shadow-lg transition-all duration-200 hover:scale-105"
               >
                 Go to Admin Panel
