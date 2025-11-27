@@ -2,8 +2,10 @@ import Link from 'next/link';
 
 async function getPost(slug) {
   try {
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || (typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000');
+    
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/posts/${slug}`,
+      `${baseUrl}/api/posts/${slug}`,
       { 
         cache: 'no-store',
         next: { revalidate: 0 }
