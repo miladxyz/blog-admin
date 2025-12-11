@@ -40,7 +40,7 @@ export default async function Home() {
               Mehrnaz Blog
             </h1>
             <p className="text-xl sm:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-              Thoughts, stories and ideas about technology, design, and life
+              Thoughts on digital marketing, content, media, and strategy.
             </p>
           </div>
         </div>
