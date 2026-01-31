@@ -5,24 +5,32 @@ import { useState } from 'react';
 export default function Contact() {
   const [status, setStatus] = useState(''); // 'sending', 'success', 'error'
   
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus('sending');
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setStatus('sending');
 
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData);
+  const formData = new FormData(e.target);
+  // Add your Access Key to the form data
+  formData.append("access_key", "fef513fa-8a08-4f1a-b795-70be304ea289");
 
-    // Replace this with your actual API endpoint or email service logic
-    try {
-      // Simulation of an API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      console.log('Form submitted:', data);
+  try {
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
       setStatus('success');
       e.target.reset();
-    } catch (error) {
+    } else {
       setStatus('error');
     }
-  };
+  } catch (error) {
+    setStatus('error');
+  }
+};
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
