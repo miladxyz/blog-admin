@@ -3,6 +3,7 @@
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { GoogleTagManager } from '@next/third-parties/google'
+import Navigation from './components/Navigation';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,6 +19,7 @@ export default function RootLayout({ children }: any) {
     <html lang="en">
       <body className={inter.className}>
         <GoogleTagManager gtmId={GTM_ID || ''} />
+        <Navigation />
         {children}
       </body>
     </html>
