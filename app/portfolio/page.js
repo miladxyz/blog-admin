@@ -535,23 +535,6 @@ const studentProjects = [
   },
 ];
 
-const devProjects = [
-  {
-    name: 'Personal Blog — Public Site',
-    role: 'Frontend',
-    stack: ['Next.js 16', 'React 19', 'Tailwind CSS v4', 'MongoDB'],
-    description:
-      'The public-facing side of this blog: a home feed of posts, dynamic blog post pages, About and Contact pages, and a responsive navigation bar with scroll-to-top / scroll-to-bottom controls. Includes Google Tag Manager integration and a working contact form powered by Web3Forms.',
-  },
-  {
-    name: 'Personal Blog — Admin Dashboard',
-    role: 'Backend',
-    stack: ['Next.js API Routes', 'MongoDB / Mongoose', 'Password-protected auth'],
-    description:
-      'The content-management side of the same project: a password-protected dashboard for creating, editing, publishing, and deleting posts, backed by REST API endpoints for the posts collection with automatic slug generation.',
-  },
-];
-
 /* ---------------------------------------------------------
    Page
 --------------------------------------------------------- */
@@ -662,27 +645,6 @@ export default function Portfolio() {
               me to continuously improve my communication skills, stay curious, and contribute to the professional
               growth of others.
             </p>
-          </div>
-        </section>
-
-        {/* Web development projects */}
-        <section>
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">Web Development Projects</h2>
-          <p className="text-gray-600 text-lg mb-8">
-            Alongside marketing, I like building the tools I use — including this blog, a small full-stack project
-            covering both the public site and its content-management backend.
-          </p>
-          <div className="grid md:grid-cols-2 gap-6">
-            {devProjects.map((p) => (
-              <div key={p.name} className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
-                <span className="inline-block text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-3 py-1 rounded-full mb-4">
-                  {p.role}
-                </span>
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">{p.name}</h3>
-                <p className="text-gray-600 mb-4 leading-relaxed">{p.description}</p>
-                <TagList items={p.stack} />
-              </div>
-            ))}
           </div>
         </section>
       </div>
