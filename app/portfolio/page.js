@@ -2,6 +2,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 /* ---------------------------------------------------------
    Small building blocks
@@ -561,8 +562,18 @@ export default function Portfolio() {
       {/* Hero */}
       <div className="relative overflow-hidden bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
         <div className="absolute inset-0 bg-black/10"></div>
-        <div className="relative max-w-5xl mx-auto px-6 py-24 sm:py-32">
-          <div className="text-center">
+        <div className="relative max-w-5xl mx-auto px-6 py-20 sm:py-28">
+          <div className="flex flex-col items-center text-center">
+            <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full overflow-hidden border-4 border-white/80 shadow-2xl mb-8">
+              <Image
+                src="/images/mehrnaz.jpg"
+                alt="Mehrnaz Bahramzadeh"
+                width={352}
+                height={352}
+                className="w-full h-full object-cover"
+                priority
+              />
+            </div>
             <h1 className="text-5xl sm:text-7xl font-bold text-white mb-6 tracking-tight">Portfolio</h1>
             <p className="text-2xl sm:text-3xl text-white font-semibold mb-4">Mehrnaz Bahramzadeh</p>
             <p className="text-lg sm:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
