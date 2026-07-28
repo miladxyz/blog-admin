@@ -82,7 +82,7 @@ function Gallery({ images }) {
               alt={img.alt}
               fill
               sizes={singleWide ? '(max-width: 768px) 100vw, 640px' : '(max-width: 640px) 50vw, 25vw'}
-              className={`${singleWide ? 'object-contain p-2' : 'object-cover'} group-hover:scale-105 transition-transform duration-300`}
+              className={`${singleWide || img.fit === 'contain' ? 'object-contain p-2' : 'object-cover'} group-hover:scale-105 transition-transform duration-300`}
             />
           </button>
         ))}
@@ -194,7 +194,35 @@ function RoadmapRow({ items }) {
    Case study / campaign card
 --------------------------------------------------------- */
 
-function CaseStudyCard({ id, kind, title, subtitle, roadmap, stats, imageNote, images, sections }) {
+function LinkPills({ links }) {
+  if (!links || links.length === 0) return null;
+  return (
+    <div className="flex flex-wrap gap-2 mb-6">
+      {links.map((link, i) => (
+        <a
+          key={i}
+          href={link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-700 bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-full hover:bg-blue-100 transition-colors"
+        >
+          {link.icon === 'instagram' ? (
+            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+            </svg>
+          ) : (
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+            </svg>
+          )}
+          {link.label}
+        </a>
+      ))}
+    </div>
+  );
+}
+
+function CaseStudyCard({ id, kind, title, subtitle, roadmap, stats, links, imageNote, images, sections }) {
   return (
     <div id={id} className="scroll-mt-24 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
       <div className="p-6 sm:p-10">
@@ -203,6 +231,8 @@ function CaseStudyCard({ id, kind, title, subtitle, roadmap, stats, imageNote, i
         </span>
         <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">{title}</h3>
         <p className="text-gray-600 text-lg leading-relaxed mb-6">{subtitle}</p>
+
+        <LinkPills links={links} />
 
         {roadmap && <RoadmapRow items={roadmap} />}
 
@@ -246,11 +276,17 @@ const caseStudies = [
       { value: '300K', label: 'Instagram followers' },
       { value: '5 → 50', label: 'Team members' },
     ],
+    links: [
+      { href: 'https://www.komodaa.com/', label: 'komodaa.com' },
+      { href: 'http://instagram.com/komodaa', label: '@komodaa', icon: 'instagram' },
+    ],
     images: [
       { src: '/images/komodaa/komodaa-1.jpg', alt: 'The Komodaa founding team at the office' },
       { src: '/images/komodaa/komodaa-2.jpg', alt: 'The Komodaa team group photo' },
       { src: '/images/komodaa/komodaa-3.jpg', alt: 'The Komodaa team on a video call' },
       { src: '/images/komodaa/komodaa-4.jpg', alt: 'The Komodaa team at an in-person gathering' },
+      { src: '/images/komodaa/komodaa-instagram-game-1.jpg', alt: 'Komodaa Instagram engagement game post, over 4k comments and 3k likes', fit: 'contain' },
+      { src: '/images/komodaa/komodaa-instagram-game-2.jpg', alt: 'Komodaa Instagram engagement game post, over 3k comments and 3k likes', fit: 'contain' },
     ],
     sections: [
       {
@@ -313,6 +349,12 @@ const caseStudies = [
         ],
       },
       {
+        title: 'Social Media Highlights',
+        paragraphs: [
+          'Some of the most engaging social media content I ran at Komodaa were interactive Instagram games and challenges, which regularly outperformed standard posts, driving thousands of comments and likes per post while growing the community organically.',
+        ],
+      },
+      {
         title: 'Key Takeaways',
         paragraphs: [
           'My experience at Komodaa taught me how to build scalable growth systems in a fast-moving startup environment. Working across acquisition, engagement, retention, and automation strengthened my ability to combine creativity, data, and cross-functional collaboration to drive sustainable business growth.',
@@ -334,10 +376,20 @@ const caseStudies = [
       { value: '+177%', label: 'New customers' },
       { value: '+15%', label: 'Uploaded listings' },
     ],
+    links: [
+      { href: 'https://www.komodaa.com/', label: 'komodaa.com' },
+      { href: 'http://instagram.com/komodaa', label: '@komodaa', icon: 'instagram' },
+    ],
     images: [
+      {
+        src: '/images/komodaa/black-friday-creatives.jpg',
+        alt: "Komodaa Black Friday social media creatives: Go Green This Black Friday campaign artwork",
+        fit: 'contain',
+      },
       {
         src: '/images/komodaa/black-friday-sold-items-chart.jpg',
         alt: 'Sold items chart showing a peak during the Black Friday campaign, year over year',
+        fit: 'contain',
       },
     ],
     sections: [
@@ -383,6 +435,7 @@ const caseStudies = [
       { value: '27%+', label: 'Top email open rate' },
       { value: '5%+', label: 'Top SMS CTR' },
     ],
+    links: [{ href: 'http://eseminar.tv/', label: 'eseminar.tv' }],
     images: [
       { src: '/images/eseminar/eseminar-1.jpg', alt: 'The Eseminar team on a video call' },
       { src: '/images/eseminar/eseminar-2.jpg', alt: 'The Eseminar team on a video call, gallery view' },
@@ -484,6 +537,7 @@ const caseStudies = [
       { value: '691', label: 'Coded quotes analysed' },
       { value: '7', label: 'Behavioural themes identified' },
     ],
+    links: [{ href: 'https://rohausandco.com/', label: 'rohausandco.com' }],
     images: [
       { src: '/images/paper-trails/paper-trails-interview.jpg', alt: 'Conducting a qualitative research interview for the Paper Trails project' },
     ],
@@ -578,6 +632,7 @@ const caseStudies = [
 const studentProjects = [
   {
     name: 'Carrots.nl',
+    website: 'https://www.carrots.nl/',
     description: 'A Dutch vegan marketplace connecting buyers and sellers of vegan products across multiple categories.',
     contributions: [
       'Developed a creative brief, including audience insights and content direction.',
@@ -589,9 +644,11 @@ const studentProjects = [
       'Translated research findings into actionable marketing recommendations.',
     ],
     deliverable: 'Creative Brief',
+    downloadHref: '/downloads/carrots-creative-brief.pdf',
   },
   {
     name: 'Merk Fryslân',
+    website: 'https://www.merkfryslan.nl/nl',
     description: 'A place-branding project promoting Friesland as an attractive destination for international students.',
     contributions: [
       'Conducted audience research and communication analysis.',
@@ -601,6 +658,7 @@ const studentProjects = [
       'Helped develop the final pitchbook and strategic recommendations.',
     ],
     deliverable: 'Pitchbook',
+    downloadHref: '/downloads/merk-fryslan-pitchbook.pdf',
   },
 ];
 
@@ -673,10 +731,18 @@ export default function PortfolioContent() {
               <div key={p.name} className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">{p.name}</h3>
                 <p className="text-gray-600 mb-4 leading-relaxed">{p.description}</p>
+                {p.website && <LinkPills links={[{ href: p.website, label: p.website.replace(/^https?:\/\//, '') }]} />}
                 <BulletList items={p.contributions} />
-                <span className="inline-flex items-center gap-2 mt-6 text-sm font-medium text-gray-500 bg-gray-100 px-3 py-1.5 rounded-full">
-                  📄 {p.deliverable} available on request
-                </span>
+                <a
+                  href={p.downloadHref}
+                  download
+                  className="inline-flex items-center gap-2 mt-6 text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 px-4 py-2 rounded-full hover:shadow-lg transition-all"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3" />
+                  </svg>
+                  Download {p.deliverable} (PDF)
+                </a>
               </div>
             ))}
           </div>
