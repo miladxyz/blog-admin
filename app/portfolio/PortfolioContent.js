@@ -305,8 +305,6 @@ const caseStudies = [
       { src: '/images/komodaa/komodaa-3.jpg', alt: 'The Komodaa team on a video call' },
       { src: '/images/komodaa/komodaa-4.jpg', alt: 'The Komodaa team at an in-person gathering' },
       { src: '/images/komodaa/komodaa-5.jpg', alt: 'The Komodaa team sitting together, masked, during the pandemic' },
-      { src: '/images/komodaa/komodaa-instagram-game-1.jpg', alt: 'Komodaa Instagram engagement game post, over 4k comments and 3k likes', fit: 'contain' },
-      { src: '/images/komodaa/komodaa-instagram-game-2.jpg', alt: 'Komodaa Instagram engagement game post, over 3k comments and 3k likes', fit: 'contain' },
     ],
     sections: [
       {
