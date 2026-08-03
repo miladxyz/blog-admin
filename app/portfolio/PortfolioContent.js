@@ -685,22 +685,29 @@ export default function PortfolioContent() {
       {/* Hero */}
       <div className="relative overflow-hidden bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
         <div className="absolute inset-0 bg-black/10"></div>
-        <div className="relative max-w-5xl mx-auto px-6 py-20 sm:py-28">
+        <div className="relative max-w-5xl mx-auto px-6 py-14 sm:py-18">
           <div className="flex flex-col items-center text-center">
-            <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full overflow-hidden border-4 border-white/80 shadow-2xl mb-8">
+            <div className="w-48 h-48 sm:w-60 sm:h-60 rounded-full overflow-hidden border-4 border-white/80 shadow-2xl mb-6">
               <Image
                 src="/images/mehrnaz.jpg"
                 alt="Mehrnaz Bahramzadeh"
-                width={352}
-                height={352}
+                width={480}
+                height={480}
                 className="w-full h-full object-cover"
                 priority
               />
             </div>
-            <h1 className="text-5xl sm:text-7xl font-bold text-white mb-6 tracking-tight">Portfolio</h1>
-            <p className="text-2xl sm:text-3xl text-white font-semibold mb-4">Mehrnaz Bahramzadeh</p>
-            <p className="text-lg sm:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
+            <h1 className="text-5xl sm:text-7xl font-bold text-white mb-4 tracking-tight">Portfolio</h1>
+            <p className="text-2xl sm:text-3xl text-white font-semibold mb-2">Mehrnaz Bahramzadeh</p>
+            <p className="text-lg sm:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed mb-2">
               Growth Marketing & Marketing Automation Specialist
+            </p>
+            <p className="flex items-center gap-1.5 text-white/80 text-sm sm:text-base">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              Based in the Netherlands
             </p>
           </div>
         </div>
@@ -808,6 +815,16 @@ export default function PortfolioContent() {
                 icon: (
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+                  </svg>
+                ),
+              },
+              {
+                label: 'LinkedIn',
+                href: 'https://www.linkedin.com/in/mehrnazbahramzadeh/',
+                bgClass: 'bg-[#0A66C2]',
+                icon: (
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                   </svg>
                 ),
               },
