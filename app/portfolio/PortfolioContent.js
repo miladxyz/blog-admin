@@ -1,12 +1,46 @@
 // app/portfolio/PortfolioContent.js
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 /* ---------------------------------------------------------
    Small building blocks
 --------------------------------------------------------- */
+
+function Reveal({ children, className = '', delay = 0 }) {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      style={{ transitionDelay: `${delay}ms` }}
+      className={`transition-all duration-700 ease-out ${
+        visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      } ${className}`}
+    >
+      {children}
+    </div>
+  );
+}
 
 function Chevron({ open }) {
   return (
@@ -39,7 +73,7 @@ function Collapsible({ title, defaultOpen = false, children }) {
 
 function StatPill({ value, label }) {
   return (
-    <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl px-4 py-4 text-center border border-blue-100">
+    <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl px-4 py-4 text-center border border-blue-100 transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-purple-200 cursor-default">
       <div className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
         {value}
       </div>
@@ -160,6 +194,22 @@ function SectionBody({ section }) {
   return (
     <div className="space-y-4">
       <Paragraphs items={section.paragraphs} />
+      {section.image && (
+        <div className="relative w-full rounded-xl overflow-hidden border border-gray-200 shadow-sm bg-gray-50">
+          <Image
+            src={section.image.src}
+            alt={section.image.alt}
+            width={1600}
+            height={520}
+            className="w-full h-auto object-contain"
+          />
+          {section.image.caption && (
+            <p className="text-xs text-gray-500 text-center py-2 px-3 bg-white border-t border-gray-100">
+              {section.image.caption}
+            </p>
+          )}
+        </div>
+      )}
       <BulletList items={section.list} />
       <TagList items={section.tags} />
       {section.groups &&
@@ -241,9 +291,9 @@ function SocialLinks({ links }) {
   );
 }
 
-function CaseStudyCard({ id, kind, title, subtitle, roadmap, stats, links, imageNote, images, sections }) {
+function CaseStudyCard({ id, kind, title, subtitle, roadmap, stats, links, imageNote, images, sections, downloadHref, downloadLabel }) {
   return (
-    <div id={id} className="scroll-mt-24 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+    <div id={id} className="scroll-mt-24 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
       <div className="p-6 sm:p-10">
         <span className="inline-block text-xs font-bold uppercase tracking-wider text-purple-600 bg-purple-50 px-3 py-1 rounded-full mb-4">
           {kind}
@@ -264,6 +314,19 @@ function CaseStudyCard({ id, kind, title, subtitle, roadmap, stats, links, image
         )}
 
         {images && images.length > 0 ? <Gallery images={images} /> : imageNote && <ImagePlaceholder label={imageNote} />}
+
+        {downloadHref && (
+          <a
+            href={downloadHref}
+            download
+            className="inline-flex items-center gap-2 mt-4 mb-2 text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 px-4 py-2 rounded-full hover:shadow-lg transition-all"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3" />
+            </svg>
+            Download {downloadLabel || 'Full Report'} (PDF)
+          </a>
+        )}
 
         <div className="space-y-3 mt-2">
           {sections.map((sec, i) => (
@@ -305,6 +368,9 @@ const caseStudies = [
       { src: '/images/komodaa/komodaa-3.jpg', alt: 'The Komodaa team on a video call' },
       { src: '/images/komodaa/komodaa-4.jpg', alt: 'The Komodaa team at an in-person gathering' },
       { src: '/images/komodaa/komodaa-5.jpg', alt: 'The Komodaa team sitting together, masked, during the pandemic' },
+      { src: '/images/komodaa/komodaa-6.jpg', alt: 'The Komodaa team on a large group video call' },
+      { src: '/images/komodaa/komodaa-7.jpg', alt: 'The Komodaa team posing together for a group photo' },
+      { src: '/images/komodaa/komodaa-8.jpg', alt: 'The modern glass-walled meeting room at the Komodaa office' },
     ],
     sections: [
       {
@@ -371,6 +437,11 @@ const caseStudies = [
         paragraphs: [
           'Some of the most engaging social media content I ran at Komodaa were interactive Instagram games and challenges, which regularly outperformed standard posts, driving thousands of comments and likes per post while growing the community organically.',
         ],
+        image: {
+          src: '/images/komodaa/komodaa-social-highlights.jpg',
+          alt: "Komodaa's Instagram account growth across its rebrand, from 5,650 to 295K followers",
+          caption: "Instagram follower growth across Komodaa's brand evolution — from 5,650 to 295K followers",
+        },
       },
       {
         title: 'Key Takeaways',
@@ -554,6 +625,8 @@ const caseStudies = [
     images: [
       { src: '/images/paper-trails/paper-trails-interview.jpg', alt: 'Conducting a qualitative research interview for the Paper Trails project' },
     ],
+    downloadHref: '/downloads/paper-trails-dutch-market-entry-strategy.pdf',
+    downloadLabel: 'Dutch Market Entry Strategy',
     sections: [
       {
         title: 'Overview',
@@ -675,6 +748,69 @@ const studentProjects = [
   },
 ];
 
+const testimonials = [
+  {
+    name: 'Amirreza Sharifi',
+    role: 'Software Engineer at Booking.com',
+    context: 'Amirreza worked with Mehrnaz but on different teams',
+    quote:
+      "I collaborated with Mehrnaz at Komodaa on marketing automation initiatives, where I focused on the engineering aspects and she brought strong leadership from the marketing perspective. Her ability to design smart user pathways, incorporating segmentation techniques to boost retention and interaction, really streamlined our technical setups and drove better outcomes. Mehrnaz's deep understanding of how people engage with content consistently improved our joint efforts, blending data-driven tactics. She's collaborative, forward-thinking, and excellent.",
+    rotate: '-rotate-2',
+  },
+  {
+    name: 'Negar Jafari',
+    role: 'Senior Product Manager at SnapTrip',
+    context: 'Negar worked with Mehrnaz on the same team',
+    quote:
+      "I had the pleasure of working with Mehrnaz directly on several projects for 4 years. I was particularly impressed by her discipline and passion. She has a great attitude to build trust in her team, she has a brilliant mindset for growth plans and always finds a creative way to solve a problem.",
+    rotate: 'rotate-2',
+  },
+];
+
+function Initials({ name }) {
+  const initials = name
+    .split(' ')
+    .map((p) => p[0])
+    .join('')
+    .slice(0, 2);
+  return (
+    <div className="w-12 h-12 shrink-0 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 text-white font-bold flex items-center justify-center text-lg shadow-md">
+      {initials}
+    </div>
+  );
+}
+
+function TestimonialCloud({ items }) {
+  return (
+    <div className="flex flex-wrap justify-center gap-6 sm:gap-8">
+      {items.map((t, i) => (
+        <Reveal key={t.name} delay={i * 120} className="w-full sm:w-[calc(50%-1rem)] max-w-md">
+          <div
+            className={`relative bg-white rounded-3xl shadow-lg border border-gray-100 p-6 sm:p-7 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:rotate-0 ${t.rotate}`}
+          >
+            <svg
+              className="absolute -top-4 -left-2 w-10 h-10 text-purple-200"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.638 3.996-5.849h-3.983v-10h9.983z" />
+            </svg>
+            <p className="text-gray-700 leading-relaxed text-[15px] mb-5 relative z-10">{t.quote}</p>
+            <div className="flex items-center gap-3">
+              <Initials name={t.name} />
+              <div>
+                <p className="font-bold text-gray-900 leading-tight">{t.name}</p>
+                <p className="text-sm text-gray-500 leading-tight">{t.role}</p>
+                <p className="text-xs text-gray-400 mt-0.5">{t.context}</p>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      ))}
+    </div>
+  );
+}
+
 /* ---------------------------------------------------------
    Page
 --------------------------------------------------------- */
@@ -685,70 +821,125 @@ export default function PortfolioContent() {
       {/* Hero */}
       <div className="relative overflow-hidden bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
         <div className="absolute inset-0 bg-black/10"></div>
-        <div className="relative max-w-5xl mx-auto px-6 py-14 sm:py-18">
-          <div className="flex flex-col items-center text-center">
-            <div className="w-48 h-48 sm:w-60 sm:h-60 rounded-full overflow-hidden border-4 border-white/80 shadow-2xl mb-6">
+        <div className="relative max-w-5xl mx-auto px-6 py-8 sm:py-10">
+          <div className="flex flex-col sm:flex-row items-center sm:items-center gap-5 sm:gap-6 text-center sm:text-left">
+            <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-4 border-white/80 shadow-2xl shrink-0">
               <Image
                 src="/images/mehrnaz.jpg"
                 alt="Mehrnaz Bahramzadeh"
-                width={480}
-                height={480}
+                width={192}
+                height={192}
                 className="w-full h-full object-cover"
                 priority
               />
             </div>
-            <h1 className="text-5xl sm:text-7xl font-bold text-white mb-4 tracking-tight">Portfolio</h1>
-            <p className="text-2xl sm:text-3xl text-white font-semibold mb-2">Mehrnaz Bahramzadeh</p>
-            <p className="text-lg sm:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed mb-2">
-              Growth Marketing & Marketing Automation Specialist
-            </p>
-            <p className="flex items-center gap-1.5 text-white/80 text-sm sm:text-base">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              Based in the Netherlands
-            </p>
+            <div className="flex-1">
+              <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight leading-tight">Mehrnaz Bahramzadeh</h1>
+              <p className="text-sm sm:text-base text-white/90 leading-snug mt-0.5">
+                Growth Marketing & Marketing Automation Specialist
+              </p>
+              <p className="flex items-center justify-center sm:justify-start gap-1.5 text-white/80 text-xs sm:text-sm mt-1">
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                Based in the Netherlands
+              </p>
+            </div>
+            <div className="flex gap-2 shrink-0">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-purple-700 bg-white px-5 py-2.5 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                Contact Me
+              </Link>
+            </div>
+          </div>
+
+          {/* Quick jump pills */}
+          <div className="flex flex-wrap justify-center sm:justify-start gap-2 mt-6">
+            {caseStudies.map((cs) => (
+              <a
+                key={cs.id}
+                href={`#${cs.id}`}
+                className="text-xs sm:text-sm font-medium text-white/90 bg-white/10 hover:bg-white/25 border border-white/20 px-3 py-1.5 rounded-full transition-all hover:-translate-y-0.5"
+              >
+                {cs.title}
+              </a>
+            ))}
+            <a
+              href="#recommendations"
+              className="text-xs sm:text-sm font-medium text-white/90 bg-white/10 hover:bg-white/25 border border-white/20 px-3 py-1.5 rounded-full transition-all hover:-translate-y-0.5"
+            >
+              Recommendations
+            </a>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-slate-50 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-slate-50 to-transparent"></div>
       </div>
 
       <div className="max-w-5xl mx-auto px-6 py-16 space-y-20">
         {/* Intro */}
-        <section className="bg-white rounded-2xl shadow-xl p-8 sm:p-12 border border-gray-100">
-          <p className="text-xl text-gray-700 leading-relaxed">
-            I'm a Growth Marketing professional with 6+ years of experience driving growth for digital platforms
-            through customer acquisition, CRM, lifecycle marketing, mobile app marketing, and marketing automation. I
-            enjoy building scalable marketing systems and creating customer experiences that combine creativity,
-            data, and technology.
-          </p>
-        </section>
+        <Reveal>
+          <section className="bg-white rounded-2xl shadow-xl p-8 sm:p-12 border border-gray-100 transition-all duration-300 hover:shadow-2xl">
+            <p className="text-xl text-gray-700 leading-relaxed">
+              I'm a Growth Marketing professional with 6+ years of experience driving growth for digital platforms
+              through customer acquisition, CRM, lifecycle marketing, mobile app marketing, and marketing automation. I
+              enjoy building scalable marketing systems and creating customer experiences that combine creativity,
+              data, and technology.
+            </p>
+          </section>
+        </Reveal>
 
         {/* Case studies */}
         <section id="case-studies" aria-labelledby="case-studies-heading">
-          <h2 id="case-studies-heading" className="text-3xl sm:text-4xl font-bold text-gray-900 mb-8">
-            Case Studies
-          </h2>
+          <Reveal>
+            <h2 id="case-studies-heading" className="text-3xl sm:text-4xl font-bold text-gray-900 mb-8">
+              Case Studies
+            </h2>
+          </Reveal>
           <div className="grid gap-8">
-            {caseStudies.map((cs) => (
-              <CaseStudyCard key={cs.id} {...cs} />
+            {caseStudies.map((cs, i) => (
+              <Reveal key={cs.id} delay={i * 80}>
+                <CaseStudyCard {...cs} />
+              </Reveal>
             ))}
           </div>
         </section>
 
+        {/* Recommendations */}
+        <section id="recommendations" aria-labelledby="recommendations-heading" className="scroll-mt-24">
+          <Reveal>
+            <div className="text-center mb-10">
+              <h2 id="recommendations-heading" className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
+                Recommendations
+              </h2>
+              <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+                What colleagues and collaborators from Komodaa and beyond have said about working with me.
+              </p>
+            </div>
+          </Reveal>
+          <TestimonialCloud items={testimonials} />
+        </section>
+
         {/* Student team projects */}
         <section id="student-projects" aria-labelledby="student-projects-heading">
-          <h2 id="student-projects-heading" className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
-            Student Team Projects
-          </h2>
-          <p className="text-gray-600 text-lg mb-8">
-            Collaborated with multidisciplinary teams on real-world marketing and content strategy projects for Dutch
-            clients, transforming research into actionable marketing strategies.
-          </p>
+          <Reveal>
+            <h2 id="student-projects-heading" className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
+              Student Team Projects
+            </h2>
+            <p className="text-gray-600 text-lg mb-8">
+              Collaborated with multidisciplinary teams on real-world marketing and content strategy projects for Dutch
+              clients, transforming research into actionable marketing strategies.
+            </p>
+          </Reveal>
           <div className="grid md:grid-cols-2 gap-6">
-            {studentProjects.map((p) => (
-              <div key={p.name} className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
+            {studentProjects.map((p, i) => (
+              <Reveal key={p.name} delay={i * 100}>
+                <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 h-full transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">{p.name}</h3>
                 <p className="text-gray-600 mb-4 leading-relaxed">{p.description}</p>
                 {p.website && <LinkPills links={[{ href: p.website, label: p.website.replace(/^https?:\/\//, '') }]} />}
@@ -763,7 +954,8 @@ export default function PortfolioContent() {
                   </svg>
                   Download {p.deliverable} (PDF)
                 </a>
-              </div>
+                </div>
+              </Reveal>
             ))}
           </div>
           <Gallery
