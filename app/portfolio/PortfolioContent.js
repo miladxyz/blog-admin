@@ -753,6 +753,7 @@ const testimonials = [
     name: 'Amirreza Sharifi',
     role: 'Software Engineer at Booking.com',
     context: 'Amirreza worked with Mehrnaz but on different teams',
+    linkedin: 'https://www.linkedin.com/in/amir-ashy/',
     quote:
       "I collaborated with Mehrnaz at Komodaa on marketing automation initiatives, where I focused on the engineering aspects and she brought strong leadership from the marketing perspective. Her ability to design smart user pathways, incorporating segmentation techniques to boost retention and interaction, really streamlined our technical setups and drove better outcomes. Mehrnaz's deep understanding of how people engage with content consistently improved our joint efforts, blending data-driven tactics. She's collaborative, forward-thinking, and excellent.",
     rotate: '-rotate-2',
@@ -761,6 +762,7 @@ const testimonials = [
     name: 'Negar Jafari',
     role: 'Senior Product Manager at SnapTrip',
     context: 'Negar worked with Mehrnaz on the same team',
+    linkedin: 'https://www.linkedin.com/in/negarjafari/',
     quote:
       "I had the pleasure of working with Mehrnaz directly on several projects for 4 years. I was particularly impressed by her discipline and passion. She has a great attitude to build trust in her team, she has a brilliant mindset for growth plans and always finds a creative way to solve a problem.",
     rotate: 'rotate-2',
@@ -799,7 +801,21 @@ function TestimonialCloud({ items }) {
             <div className="flex items-center gap-3">
               <Initials name={t.name} />
               <div>
-                <p className="font-bold text-gray-900 leading-tight">{t.name}</p>
+                {t.linkedin ? (
+                  <a
+                    href={t.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-bold text-gray-900 leading-tight hover:text-purple-600 transition-colors inline-flex items-center gap-1"
+                  >
+                    {t.name}
+                    <svg className="w-3.5 h-3.5 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                    </svg>
+                  </a>
+                ) : (
+                  <p className="font-bold text-gray-900 leading-tight">{t.name}</p>
+                )}
                 <p className="text-sm text-gray-500 leading-tight">{t.role}</p>
                 <p className="text-xs text-gray-400 mt-0.5">{t.context}</p>
               </div>
@@ -823,12 +839,12 @@ export default function PortfolioContent() {
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="relative max-w-5xl mx-auto px-6 py-8 sm:py-10">
           <div className="flex flex-col sm:flex-row items-center sm:items-center gap-5 sm:gap-6 text-center sm:text-left">
-            <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-4 border-white/80 shadow-2xl shrink-0">
+            <div className="w-36 h-36 sm:w-52 sm:h-52 rounded-full overflow-hidden border-4 border-white/80 shadow-2xl shrink-0">
               <Image
                 src="/images/mehrnaz.jpg"
                 alt="Mehrnaz Bahramzadeh"
-                width={192}
-                height={192}
+                width={416}
+                height={416}
                 className="w-full h-full object-cover"
                 priority
               />
@@ -915,7 +931,7 @@ export default function PortfolioContent() {
           <Reveal>
             <div className="text-center mb-10">
               <h2 id="recommendations-heading" className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
-                Recommendations
+                What Colleagues Say About Me!
               </h2>
               <p className="text-gray-600 text-lg max-w-2xl mx-auto">
                 What colleagues and collaborators from Komodaa and beyond have said about working with me.
