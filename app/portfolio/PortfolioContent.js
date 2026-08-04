@@ -845,7 +845,7 @@ export default function PortfolioContent() {
                 alt="Mehrnaz Bahramzadeh"
                 width={416}
                 height={416}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover scale-150"
                 priority
               />
             </div>
