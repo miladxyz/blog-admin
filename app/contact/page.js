@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Script from 'next/script';
 
 export default function Contact() {
   const [status, setStatus] = useState(''); // 'sending', 'success', 'error'
@@ -164,21 +163,6 @@ const handleSubmit = async (e) => {
             </div>
           </div>
 
-        </div>
-
-        {/* HubSpot Form (test embed) */}
-        <div className="mt-16">
-          <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
-            <h2 className="text-3xl font-bold text-gray-900 mb-2">HubSpot Form (Test)</h2>
-            <p className="text-gray-600 mb-6">Testing a HubSpot form embed to see if it works.</p>
-            <div
-              className="hs-form-frame"
-              data-region="eu1"
-              data-form-id="ff939470-add3-4865-853b-3cc97d0ccba8"
-              data-portal-id="146914493"
-            ></div>
-            <Script src="https://js-eu1.hsforms.net/forms/embed/146914493.js" strategy="lazyOnload" />
-          </div>
         </div>
       </div>
     </main>

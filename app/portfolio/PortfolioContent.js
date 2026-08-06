@@ -4,6 +4,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import Script from 'next/script';
 
 /* ---------------------------------------------------------
    Small building blocks
@@ -1349,6 +1350,19 @@ export default function PortfolioContent() {
             </p>
           </div>
         </section>
+                {/* HubSpot Form (test embed) */}
+        <div className="mt-16">
+          <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+            <h2 className="text-3xl font-bold text-gray-900 mb-2">HubSpot contact Form</h2>
+            <div
+              className="hs-form-frame"
+              data-region="eu1"
+              data-form-id="ff939470-add3-4865-853b-3cc97d0ccba8"
+              data-portal-id="146914493"
+            ></div>
+            <Script src="https://js-eu1.hsforms.net/forms/embed/146914493.js" strategy="lazyOnload" />
+          </div>
+        </div>
       </div>
 
       {/* Footer */}
