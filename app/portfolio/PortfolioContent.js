@@ -1040,12 +1040,12 @@ export default function PortfolioContent() {
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="relative max-w-5xl mx-auto px-6 py-8 sm:py-10">
           <div className="flex flex-col sm:flex-row items-center sm:items-center gap-5 sm:gap-6 text-center sm:text-left">
-            <div className="w-36 h-36 sm:w-52 sm:h-52 rounded-full overflow-hidden border-4 border-white/80 shadow-2xl shrink-0">
+            <div className="w-[150px] h-[150px] rounded-full overflow-hidden border-4 border-white/80 shadow-2xl shrink-0">
               <Image
                 src="/images/mehrnaz.jpg"
                 alt="Mehrnaz Bahramzadeh"
-                width={416}
-                height={416}
+                width={300}
+                height={300}
                 className="w-full h-full object-cover"
                 priority
               />
