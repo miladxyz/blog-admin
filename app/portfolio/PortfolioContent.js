@@ -1042,7 +1042,7 @@ export default function PortfolioContent() {
                 alt="Mehrnaz Bahramzadeh"
                 width={300}
                 height={300}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover scale-150"
                 priority
               />
             </div>
@@ -1059,16 +1059,21 @@ export default function PortfolioContent() {
                 Based in the Netherlands
               </p>
               <div className="flex flex-wrap justify-center sm:justify-start gap-1.5 mt-2.5">
-                {['CRM', 'Lifecycle Marketing', 'Lead Generation', 'Email Marketing', 'Behavioral Segmentation'].map(
-                  (tag) => (
-                    <span
-                      key={tag}
-                      className="text-[11px] sm:text-xs font-medium text-white/90 bg-white/15 border border-white/25 px-2.5 py-1 rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  )
-                )}
+                {[
+                  { label: 'CRM', href: '#komodaa-crm-automation' },
+                  { label: 'Lifecycle Marketing', href: '#komodaa-crm-automation' },
+                  { label: 'Lead Generation', href: '#eseminar' },
+                  { label: 'Email Marketing', href: '#eseminar-crm-lead-gen' },
+                  { label: 'Behavioral Segmentation', href: '#eseminar-crm-lead-gen' },
+                ].map((tag) => (
+                  <a
+                    key={tag.label}
+                    href={tag.href}
+                    className="text-[11px] sm:text-xs font-medium text-white/90 bg-white/15 border border-white/25 px-2.5 py-1 rounded-full hover:bg-white/30 hover:-translate-y-0.5 transition-all"
+                  >
+                    {tag.label}
+                  </a>
+                ))}
               </div>
             </div>
             <div className="flex gap-2 shrink-0">
@@ -1232,12 +1237,11 @@ export default function PortfolioContent() {
               Continuously building on my marketing and analytics skill set through ongoing certifications.
             </p>
           </Reveal>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
               { src: '/images/certifications/hubspot-marketing-hub.png', alt: 'HubSpot Marketing Hub Software Certified' },
               { src: '/images/certifications/google-analytics-certification.png', alt: 'Google Analytics Certification' },
               { src: '/images/certifications/ga4-linkedin-learning.png', alt: 'Google Analytics 4 (GA4) Essential Training — LinkedIn Learning' },
-              { src: '/images/certifications/busuu-dutch-a1.png', alt: 'Busuu Certificate of Level Completion — Dutch A1' },
             ].map((cert, i) => (
               <Reveal key={cert.src} delay={i * 80}>
                 <div className="relative bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
