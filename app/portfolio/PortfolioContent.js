@@ -684,6 +684,7 @@ const caseStudies = [
           'Implemented UTM tracking and analysed campaign performance using GA4, GTM, Looker Studio, and Microsoft Clarity.',
           'Monitored campaign KPIs and continuously optimised performance based on data insights.',
           'Collaborated with sales, design, and product teams to improve lead quality and campaign effectiveness.',
+          'Planned and executed retargeting and remarketing campaigns to re-engage webinar landing page visitors and past leads across digital channels.',
         ],
       },
       {
@@ -778,6 +779,11 @@ const caseStudies = [
       'Developed a research-driven market entry and content strategy to help Paper Trails enter the Dutch market through customer research, strategic planning, and communication prototypes.',
     links: [
       { href: 'https://rohausandco.com/', label: 'rohausandco.com' },
+      {
+        href: 'https://drive.google.com/file/d/14i8xNdaASoiGwwOLA3YMb_R1BlSq1RA8/view?usp=sharing',
+        label: 'Watch Prototype Video',
+        icon: 'play',
+      },
     ],
     images: [
       { src: '/images/paper-trails/paper-trails-interview.jpg', alt: 'Conducting a qualitative research interview for the Paper Trails project' },
@@ -888,8 +894,6 @@ const studentProjects = [
     ],
     deliverable: 'Creative Brief',
     downloadHref: '/downloads/carrots-creative-brief.pdf',
-    videoHref: 'https://drive.google.com/file/d/1bk3rMnFEBLblJFcqauiwkb5v4mr_5T-O/view?usp=sharing',
-    videoLabel: 'Watch Prototype Video',
   },
   {
     name: 'Merk Fryslân',
@@ -1219,9 +1223,9 @@ export default function PortfolioContent() {
               </Reveal>
             ))}
           </div>
+          <Gallery images={[{ src: '/images/student-projects/team-photo.jpg', alt: 'Student project team photo' }]} />
           <Gallery
             images={[
-              { src: '/images/student-projects/team-photo.jpg', alt: 'Student project team photo' },
               { src: '/images/student-projects/nhl-stenden-team-collage.jpg', alt: 'NHL Stenden student team collage: studio shoot, workspace, and team gatherings' },
             ]}
           />
