@@ -422,12 +422,29 @@ const caseStudies = [
         ],
       },
       {
+        title: 'Tools & Platforms',
+        paragraphs: ['The tech stack I worked with day-to-day to run acquisition, automation, and analytics:'],
+        tags: [
+          'Intrack & Mautic (Marketing Automation)',
+          'Metrix (Attribution & Marketing Automation)',
+          'Firebase',
+          'Google Ads',
+          'GA4',
+          'Google Tag Manager',
+          'SMS Marketing Platform',
+          'Yektanet & Tapsel (Paid Advertising)',
+          'Canva',
+          'CapCut',
+          'WordPress',
+        ],
+      },
+      {
         title: 'Results',
         paragraphs: ['Together with an incredible team, we achieved significant business growth:'],
         list: [
           '🚀 Grew the platform to 2M+ registered users',
           '📱 Reached 500K monthly active users (MAU)',
-          '📸 Grew Instagram from 0 to 400K followers',
+          '📸 Grew Instagram from 0 to 300K followers',
           '💼 Helped establish the marketing function from the ground up',
           "💰 Contributed to the company's growth that supported a strategic investment from Digikala Group",
         ],
@@ -845,7 +862,7 @@ export default function PortfolioContent() {
                 alt="Mehrnaz Bahramzadeh"
                 width={416}
                 height={416}
-                className="w-full h-full object-cover scale-150"
+                className="w-full h-full object-cover"
                 priority
               />
             </div>
@@ -861,6 +878,18 @@ export default function PortfolioContent() {
                 </svg>
                 Based in the Netherlands
               </p>
+              <div className="flex flex-wrap justify-center sm:justify-start gap-1.5 mt-2.5">
+                {['CRM', 'Lifecycle Marketing', 'Lead Generation', 'Email Marketing', 'Behavioral Segmentation'].map(
+                  (tag) => (
+                    <span
+                      key={tag}
+                      className="text-[11px] sm:text-xs font-medium text-white/90 bg-white/15 border border-white/25 px-2.5 py-1 rounded-full"
+                    >
+                      {tag}
+                    </span>
+                  )
+                )}
+              </div>
             </div>
             <div className="flex gap-2 shrink-0">
               <Link
@@ -902,10 +931,11 @@ export default function PortfolioContent() {
         <Reveal>
           <section className="bg-white rounded-2xl shadow-xl p-8 sm:p-12 border border-gray-100 transition-all duration-300 hover:shadow-2xl">
             <p className="text-xl text-gray-700 leading-relaxed">
-              I'm a Growth Marketing professional with 6+ years of experience driving growth for digital platforms
-              through customer acquisition, CRM, lifecycle marketing, mobile app marketing, and marketing automation. I
-              enjoy building scalable marketing systems and creating customer experiences that combine creativity,
-              data, and technology.
+              I'm a Growth Marketing professional with 6+ years of experience helping digital platforms grow,
+              including a platform with 2.2M+ users where I owned customer acquisition, CRM, and lifecycle marketing
+              end-to-end. I care about building marketing systems that actually work: data-driven, human-centered,
+              and built to last. Currently, I'm exploring how AI workflows are reshaping marketing automation and
+              actively integrating them into how I work.
             </p>
           </section>
         </Reveal>
