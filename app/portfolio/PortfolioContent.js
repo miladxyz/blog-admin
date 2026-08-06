@@ -161,7 +161,7 @@ function Paragraphs({ items }) {
 }
 
 function BulletList({ items }) {
-  if (!items) return null;
+  if (!items || items.length === 0) return null;
   return (
     <ul className="space-y-2 mt-3">
       {items.map((item, i) => (
@@ -259,6 +259,10 @@ function LinkPills({ links }) {
           {link.icon === 'instagram' ? (
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+            </svg>
+          ) : link.icon === 'play' ? (
+            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
             </svg>
           ) : (
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -469,6 +473,93 @@ const caseStudies = [
     ],
   },
   {
+    id: 'komodaa-crm-automation',
+    kind: 'Campaign Spotlight',
+    title: 'CRM Automation & Lifecycle Design',
+    subtitle:
+      'As the CRM & Marketing Automation Specialist at Komodaa, I designed the full lifecycle automation system from scratch, covering all key user moments from first sign-up to repeat purchase and re-engagement across a platform with 2.2M+ users.',
+    stats: [
+      { value: '5', label: 'Automation flows designed' },
+      { value: '30-step', label: 'Onboarding sequence' },
+      { value: '2.2M+', label: 'Users covered' },
+    ],
+    links: [
+      { href: 'https://www.komodaa.com/', label: 'komodaa.com' },
+    ],
+    sections: [
+      {
+        title: 'Overview',
+        paragraphs: [
+          '5 automation flows designed and implemented, including onboarding, buyer-seller messaging, abandoned cart, post-purchase, liked items, search-based recommendations, and RFM behavioral segmentation. Each journey below was designed end-to-end, from trigger logic and channel sequencing to fallback rules and escalation paths.',
+        ],
+      },
+      {
+        title: '30-Day Onboarding Journey',
+        paragraphs: [
+          '30-step automated sequence from sign-up to first purchase, each message designed for a specific lifecycle goal: welcome, trust building, social proof, community, and seller activation.',
+        ],
+        list: [
+          <>
+            <strong>For Trust & Safety:</strong> Explains secure payment and money-back guarantee (Day 3)
+          </>,
+          <>
+            <strong>For Social Proof:</strong> Real seller who earned 60M Toman inspires new sellers. Highlighting 2.2M women users already on the platform. (Day 2 & 5)
+          </>,
+          <>
+            <strong>For Community:</strong> Invites users to join interest-based communities: fashion, books, beauty.
+          </>,
+        ],
+        tags: ['Push Notifications', 'In-app message', 'SMS'],
+      },
+      {
+        title: 'Buyer-Seller Messaging Flow',
+        paragraphs: [
+          "Automated multi-step follow-up triggered when sellers don't respond to buyer messages within 24 hours. If still unresolved after 3 attempts, contact automatically escalated to the call center.",
+        ],
+        image: {
+          src: '/images/komodaa/journey-buyer-seller-messaging.png',
+          alt: 'Buyer-Seller Messaging Flow automation diagram',
+        },
+        tags: ['Push Notifications', 'In-app message', 'SMS'],
+      },
+      {
+        title: 'Post-Purchase Confirmation & Return Journey',
+        paragraphs: [
+          'Automated flow triggered 7 days after purchase. If the buyer confirmed receipt, the system released payment to the seller. If the buyer requested a return, return conditions were communicated automatically. Push notification first, SMS as fallback. Unresolved cases escalated to call center.',
+        ],
+        image: {
+          src: '/images/komodaa/journey-post-purchase-return.png',
+          alt: 'Post-Purchase Confirmation & Return Journey automation diagram',
+        },
+        tags: ['Push Notifications', 'In-app message', 'SMS', 'Call center escalation'],
+      },
+      {
+        title: 'Abandoned Cart Journey',
+        paragraphs: [
+          'Automated re-engagement triggered 6 hours after a user adds an item to basket without completing purchase. Message included the item name dynamically. Push notification first, web push and in-app message as secondary, SMS as final fallback based on reachability. Journey exits automatically if the item is removed from the basket.',
+        ],
+        tags: ['Push Notifications', 'Web push', 'In-app message', 'SMS'],
+      },
+      {
+        title: 'Liked Items Journey',
+        paragraphs: [
+          'Automated price-drop alert triggered when a seller adds a discount to an item a buyer has previously liked. Message included the item name dynamically and a direct link to the item. Designed to re-trigger purchase intent at the right moment without generic promotions.',
+        ],
+        tags: ['Push Notifications', 'Web push', 'In-app messages', 'SMS'],
+      },
+      {
+        title: 'RFM Behavioral Segmentation',
+        paragraphs: [
+          'Designed re-engagement campaigns based on the RFM model — Recency, Frequency, and Monetary value. Buyers who purchased from a specific category multiple times but had been inactive for several months received targeted messages with express discount codes. High basket value buyers received premium item suggestions with free express shipping. Conversion tracking built into each journey.',
+        ],
+        image: {
+          src: '/images/komodaa/journey-rfm-segmentation.png',
+          alt: 'RFM Behavioral Segmentation automation diagram',
+        },
+      },
+    ],
+  },
+  {
     id: 'komodaa-black-friday',
     kind: 'Campaign Spotlight',
     title: 'Black Friday Campaign',
@@ -598,7 +689,53 @@ const caseStudies = [
       },
       {
         title: 'Tools',
-        tags: ['GA4', 'Google Tag Manager', 'Looker Studio', 'Microsoft Clarity', 'Google Ads', 'Email Marketing Platforms', 'UTM Tracking', 'Excel', 'AI Tools (ChatGPT, Claude)'],
+        tags: ['Brevo CRM', 'GA4', 'Google Tag Manager', 'Looker Studio', 'Microsoft Clarity', 'Google Ads', 'Email Marketing Platforms', 'UTM Tracking', 'Excel', 'AI Tools (ChatGPT, Claude)'],
+      },
+      {
+        title: 'CRM-Driven Email Marketing & Lead Generation',
+        paragraphs: [
+          'As Senior Lead Generation Specialist, I owned end-to-end email and SMS campaigns to drive webinar registrations.',
+        ],
+        groups: [
+          {
+            heading: 'Problem',
+            list: [
+              'Generic email campaigns sent to all users with no targeting logic, resulting in low relevance and poor conversion for webinar registrations.',
+            ],
+          },
+          {
+            heading: 'What I Did',
+            list: [
+              'Applied existing RFM segmentation in Brevo to select the right audience for each webinar campaign. Matched webinar topic to user interest history — for example, targeting users who had attended 3+ finance webinars for a new finance event, users active in the last 30 days for time-sensitive campaigns, or combining multiple conditions for more precise targeting.',
+            ],
+          },
+          {
+            heading: 'Impact',
+            list: [
+              'Higher relevance per campaign. Guaranteed registration targets delivered for sponsored VIP webinars through data-driven audience selection.',
+            ],
+          },
+          {
+            heading: 'Segmentation Logic',
+            list: [
+              <>
+                <strong>Recency segment:</strong> Users active in the last 30 days — highest engagement probability.
+              </>,
+              <>
+                <strong>Frequency segment:</strong> Users who attended 3+ webinars on a specific topic (e.g. finance, business, marketing).
+              </>,
+              <>
+                <strong>Topic-match segment:</strong> Users who previously registered for webinars in the same category as the upcoming event.
+              </>,
+              <>
+                <strong>Multi-channel fallback:</strong> Email first. SMS for users who didn't open within 24 hours.
+              </>,
+              <>
+                <strong>Performance tracking:</strong> UTM parameters on all links. GA4 + Looker Studio for session, registration, CTR, open rate, and CPL tracking.
+              </>,
+            ],
+          },
+        ],
       },
       {
         title: 'Results',
@@ -638,7 +775,14 @@ const caseStudies = [
     title: 'Dutch Market Entry Strategy for Paper Trails',
     subtitle:
       'Developed a research-driven market entry and content strategy to help Paper Trails enter the Dutch market through customer research, strategic planning, and communication prototypes.',
-    links: [{ href: 'https://rohausandco.com/', label: 'rohausandco.com' }],
+    links: [
+      { href: 'https://rohausandco.com/', label: 'rohausandco.com' },
+      {
+        href: 'https://drive.google.com/file/d/14i8xNdaASoiGwwOLA3YMb_R1BlSq1RA8/view?usp=sharing',
+        label: 'Watch Prototype Video',
+        icon: 'play',
+      },
+    ],
     images: [
       { src: '/images/paper-trails/paper-trails-interview.jpg', alt: 'Conducting a qualitative research interview for the Paper Trails project' },
     ],
@@ -748,6 +892,8 @@ const studentProjects = [
     ],
     deliverable: 'Creative Brief',
     downloadHref: '/downloads/carrots-creative-brief.pdf',
+    videoHref: 'https://drive.google.com/file/d/1bk3rMnFEBLblJFcqauiwkb5v4mr_5T-O/view?usp=sharing',
+    videoLabel: 'Watch Prototype Video',
   },
   {
     name: 'Merk Fryslân',
@@ -762,6 +908,24 @@ const studentProjects = [
     ],
     deliverable: 'Pitchbook',
     downloadHref: '/downloads/merk-fryslan-pitchbook.pdf',
+    videoHref: 'https://drive.google.com/file/d/1oYBlIbKerEGFUTH4zoNvmRW13WYKA55f/view?usp=sharing',
+    videoLabel: 'Watch Prototype Video',
+  },
+  {
+    name: 'Qualitative Content Analysis of Volvo Video Advertisement',
+    description:
+      "For this academic project, I conducted an in-depth qualitative content analysis of a Volvo video advertisement, applying Freitag's Narrative Theory and Semiotic frameworks to decode how the brand communicates safety, trust, and emotion to its audience. The analysis examined visual language, storytelling structure, and symbolic meaning — exploring how Volvo builds an emotional connection with viewers beyond product features. This project strengthened my understanding of how consumer psychology and brand communication work together to drive perception and behavior.",
+    contributions: [],
+    externalHref: 'https://vlv-mehrnazbdm.my.canva.site/mehrnazbahramzadehv2',
+    externalLabel: 'View Project',
+  },
+  {
+    name: 'Professional & Personal Development Portfolio',
+    description:
+      "As part of my Master's programme at NHL Stenden, I developed a Professional & Personal Development Portfolio focused on skills directly relevant to the Dutch marketing job market.",
+    contributions: [],
+    externalHref: 'https://vlv-mehrnazbdm.my.canva.site/ppd-portfolio',
+    externalLabel: 'View Portfolio',
   },
 ];
 
@@ -783,6 +947,15 @@ const testimonials = [
     quote:
       "I had the pleasure of working with Mehrnaz directly on several projects for 4 years. I was particularly impressed by her discipline and passion. She has a great attitude to build trust in her team, she has a brilliant mindset for growth plans and always finds a creative way to solve a problem.",
     rotate: 'rotate-2',
+  },
+  {
+    name: 'Hans Van Gestel',
+    role: 'MICA - Digitale Werkplaats Fryslân, NHL Stenden Hogeschool',
+    context: 'Hans worked with Mehrnaz on the Paper Trails project',
+    linkedin: 'https://www.linkedin.com/in/hvgestel/',
+    quote: 'We @ MICA - Digitale Werkplaats loved working with you Mehrnaz!',
+    rotate: '-rotate-1',
+    screenshot: '/images/recommendations/hans-van-gestel-recommendation.png',
   },
 ];
 
@@ -837,6 +1010,17 @@ function TestimonialCloud({ items }) {
                 <p className="text-xs text-gray-400 mt-0.5">{t.context}</p>
               </div>
             </div>
+            {t.screenshot && (
+              <div className="relative w-full mt-5 rounded-xl overflow-hidden border border-gray-100 shadow-sm">
+                <Image
+                  src={t.screenshot}
+                  alt={`LinkedIn recommendation screenshot from ${t.name}`}
+                  width={800}
+                  height={500}
+                  className="w-full h-auto object-contain"
+                />
+              </div>
+            )}
           </div>
         </Reveal>
       ))}
@@ -906,20 +1090,28 @@ export default function PortfolioContent() {
 
           {/* Quick jump pills */}
           <div className="flex flex-wrap justify-center sm:justify-start gap-2 mt-6">
-            {caseStudies.map((cs) => (
-              <a
-                key={cs.id}
-                href={`#${cs.id}`}
-                className="text-xs sm:text-sm font-medium text-white/90 bg-white/10 hover:bg-white/25 border border-white/20 px-3 py-1.5 rounded-full transition-all hover:-translate-y-0.5"
-              >
-                {cs.title}
-              </a>
-            ))}
+            {caseStudies
+              .filter((cs) => cs.kind === 'Case Study')
+              .map((cs) => (
+                <a
+                  key={cs.id}
+                  href={`#${cs.id}`}
+                  className="text-xs sm:text-sm font-medium text-white/90 bg-white/10 hover:bg-white/25 border border-white/20 px-3 py-1.5 rounded-full transition-all hover:-translate-y-0.5"
+                >
+                  {cs.title}
+                </a>
+              ))}
             <a
               href="#recommendations"
               className="text-xs sm:text-sm font-medium text-white/90 bg-white/10 hover:bg-white/25 border border-white/20 px-3 py-1.5 rounded-full transition-all hover:-translate-y-0.5"
             >
               Recommendations
+            </a>
+            <a
+              href="#certifications"
+              className="text-xs sm:text-sm font-medium text-white/90 bg-white/10 hover:bg-white/25 border border-white/20 px-3 py-1.5 rounded-full transition-all hover:-translate-y-0.5"
+            >
+              Certifications
             </a>
           </div>
         </div>
@@ -988,18 +1180,40 @@ export default function PortfolioContent() {
                 <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 h-full transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">{p.name}</h3>
                 <p className="text-gray-600 mb-4 leading-relaxed">{p.description}</p>
-                {p.website && <LinkPills links={[{ href: p.website, label: p.website.replace(/^https?:\/\//, '') }]} />}
+                <LinkPills
+                  links={[
+                    ...(p.website ? [{ href: p.website, label: p.website.replace(/^https?:\/\//, '') }] : []),
+                    ...(p.videoHref ? [{ href: p.videoHref, label: p.videoLabel || 'Watch Video', icon: 'play' }] : []),
+                  ]}
+                />
                 <BulletList items={p.contributions} />
-                <a
-                  href={p.downloadHref}
-                  download
-                  className="inline-flex items-center gap-2 mt-6 text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 px-4 py-2 rounded-full hover:shadow-lg transition-all"
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3" />
-                  </svg>
-                  Download {p.deliverable} (PDF)
-                </a>
+                <div className="flex flex-wrap gap-3 mt-6">
+                  {p.downloadHref && (
+                    <a
+                      href={p.downloadHref}
+                      download
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 px-4 py-2 rounded-full hover:shadow-lg transition-all"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3" />
+                      </svg>
+                      Download {p.deliverable} (PDF)
+                    </a>
+                  )}
+                  {p.externalHref && (
+                    <a
+                      href={p.externalHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 px-4 py-2 rounded-full hover:shadow-lg transition-all"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                      {p.externalLabel || 'View Project'}
+                    </a>
+                  )}
+                </div>
                 </div>
               </Reveal>
             ))}
@@ -1007,8 +1221,41 @@ export default function PortfolioContent() {
           <Gallery
             images={[
               { src: '/images/student-projects/team-photo.jpg', alt: 'Student project team photo' },
+              { src: '/images/student-projects/nhl-stenden-team-collage.jpg', alt: 'NHL Stenden student team collage: studio shoot, workspace, and team gatherings' },
             ]}
           />
+        </section>
+
+        {/* Certifications */}
+        <section id="certifications" aria-labelledby="certifications-heading">
+          <Reveal>
+            <h2 id="certifications-heading" className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
+              Certifications
+            </h2>
+            <p className="text-gray-600 text-lg mb-8">
+              Continuously building on my marketing and analytics skill set through ongoing certifications.
+            </p>
+          </Reveal>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              { src: '/images/certifications/hubspot-marketing-hub.png', alt: 'HubSpot Marketing Hub Software Certified' },
+              { src: '/images/certifications/google-analytics-certification.png', alt: 'Google Analytics Certification' },
+              { src: '/images/certifications/ga4-linkedin-learning.png', alt: 'Google Analytics 4 (GA4) Essential Training — LinkedIn Learning' },
+              { src: '/images/certifications/busuu-dutch-a1.png', alt: 'Busuu Certificate of Level Completion — Dutch A1' },
+            ].map((cert, i) => (
+              <Reveal key={cert.src} delay={i * 80}>
+                <div className="relative bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
+                  <Image
+                    src={cert.src}
+                    alt={cert.alt}
+                    width={600}
+                    height={450}
+                    className="w-full h-auto object-contain"
+                  />
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </section>
 
         {/* Community & content */}
