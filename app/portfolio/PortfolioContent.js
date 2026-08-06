@@ -480,7 +480,6 @@ const caseStudies = [
       'As the CRM & Marketing Automation Specialist at Komodaa, I designed the full lifecycle automation system from scratch, covering all key user moments from first sign-up to repeat purchase and re-engagement across a platform with 2.2M+ users.',
     stats: [
       { value: '5', label: 'Automation flows designed' },
-      { value: '30-step', label: 'Onboarding sequence' },
       { value: '2.2M+', label: 'Users covered' },
     ],
     links: [
@@ -692,52 +691,6 @@ const caseStudies = [
         tags: ['Brevo CRM', 'GA4', 'Google Tag Manager', 'Looker Studio', 'Microsoft Clarity', 'Google Ads', 'Email Marketing Platforms', 'UTM Tracking', 'Excel', 'AI Tools (ChatGPT, Claude)'],
       },
       {
-        title: 'CRM-Driven Email Marketing & Lead Generation',
-        paragraphs: [
-          'As Senior Lead Generation Specialist, I owned end-to-end email and SMS campaigns to drive webinar registrations.',
-        ],
-        groups: [
-          {
-            heading: 'Problem',
-            list: [
-              'Generic email campaigns sent to all users with no targeting logic, resulting in low relevance and poor conversion for webinar registrations.',
-            ],
-          },
-          {
-            heading: 'What I Did',
-            list: [
-              'Applied existing RFM segmentation in Brevo to select the right audience for each webinar campaign. Matched webinar topic to user interest history — for example, targeting users who had attended 3+ finance webinars for a new finance event, users active in the last 30 days for time-sensitive campaigns, or combining multiple conditions for more precise targeting.',
-            ],
-          },
-          {
-            heading: 'Impact',
-            list: [
-              'Higher relevance per campaign. Guaranteed registration targets delivered for sponsored VIP webinars through data-driven audience selection.',
-            ],
-          },
-          {
-            heading: 'Segmentation Logic',
-            list: [
-              <>
-                <strong>Recency segment:</strong> Users active in the last 30 days — highest engagement probability.
-              </>,
-              <>
-                <strong>Frequency segment:</strong> Users who attended 3+ webinars on a specific topic (e.g. finance, business, marketing).
-              </>,
-              <>
-                <strong>Topic-match segment:</strong> Users who previously registered for webinars in the same category as the upcoming event.
-              </>,
-              <>
-                <strong>Multi-channel fallback:</strong> Email first. SMS for users who didn't open within 24 hours.
-              </>,
-              <>
-                <strong>Performance tracking:</strong> UTM parameters on all links. GA4 + Looker Studio for session, registration, CTR, open rate, and CPL tracking.
-              </>,
-            ],
-          },
-        ],
-      },
-      {
         title: 'Results',
         groups: [
           {
@@ -770,6 +723,54 @@ const caseStudies = [
     ],
   },
   {
+    id: 'eseminar-crm-lead-gen',
+    kind: 'Campaign Spotlight',
+    title: 'CRM-Driven Email Marketing & Lead Generation',
+    subtitle:
+      'As Senior Lead Generation Specialist, I owned end-to-end email and SMS campaigns to drive webinar registrations.',
+    links: [{ href: 'http://eseminar.tv/', label: 'eseminar.tv' }],
+    sections: [
+      {
+        title: 'Problem',
+        paragraphs: [
+          'Generic email campaigns sent to all users with no targeting logic, resulting in low relevance and poor conversion for webinar registrations.',
+        ],
+      },
+      {
+        title: 'What I Did',
+        paragraphs: [
+          'Applied existing RFM segmentation in Brevo to select the right audience for each webinar campaign. Matched webinar topic to user interest history — for example, targeting users who had attended 3+ finance webinars for a new finance event, users active in the last 30 days for time-sensitive campaigns, or combining multiple conditions for more precise targeting.',
+        ],
+      },
+      {
+        title: 'Impact',
+        paragraphs: [
+          'Higher relevance per campaign. Guaranteed registration targets delivered for sponsored VIP webinars through data-driven audience selection.',
+        ],
+      },
+      {
+        title: 'Segmentation Logic',
+        list: [
+          <>
+            <strong>Recency segment:</strong> Users active in the last 30 days — highest engagement probability.
+          </>,
+          <>
+            <strong>Frequency segment:</strong> Users who attended 3+ webinars on a specific topic (e.g. finance, business, marketing).
+          </>,
+          <>
+            <strong>Topic-match segment:</strong> Users who previously registered for webinars in the same category as the upcoming event.
+          </>,
+          <>
+            <strong>Multi-channel fallback:</strong> Email first. SMS for users who didn't open within 24 hours.
+          </>,
+          <>
+            <strong>Performance tracking:</strong> UTM parameters on all links. GA4 + Looker Studio for session, registration, CTR, open rate, and CPL tracking.
+          </>,
+        ],
+      },
+    ],
+  },
+  {
     id: 'paper-trails',
     kind: 'Case Study',
     title: 'Dutch Market Entry Strategy for Paper Trails',
@@ -777,11 +778,6 @@ const caseStudies = [
       'Developed a research-driven market entry and content strategy to help Paper Trails enter the Dutch market through customer research, strategic planning, and communication prototypes.',
     links: [
       { href: 'https://rohausandco.com/', label: 'rohausandco.com' },
-      {
-        href: 'https://drive.google.com/file/d/14i8xNdaASoiGwwOLA3YMb_R1BlSq1RA8/view?usp=sharing',
-        label: 'Watch Prototype Video',
-        icon: 'play',
-      },
     ],
     images: [
       { src: '/images/paper-trails/paper-trails-interview.jpg', alt: 'Conducting a qualitative research interview for the Paper Trails project' },
