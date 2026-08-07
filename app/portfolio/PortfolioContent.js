@@ -1351,7 +1351,7 @@ export default function PortfolioContent() {
           </div>
         </section>
                 {/* HubSpot Form (test embed) */}
-<script src="https://js-eu1.hsforms.net/forms/embed/146914493.js" defer></script>
+<Script src="https://js-eu1.hsforms.net/forms/embed/146914493.js" defer></script>
 <div class="hs-form-frame" data-region="eu1" data-form-id="ff939470-add3-4865-853b-3cc97d0ccba8" data-portal-id="146914493"></div>
       {/* Footer */}
       <footer className="mt-4 py-12 border-t border-gray-200 bg-white/50 backdrop-blur-sm">
