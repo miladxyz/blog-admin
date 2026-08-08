@@ -4,7 +4,6 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Script from 'next/script';
 
 /* ---------------------------------------------------------
    Small building blocks
@@ -1245,6 +1244,8 @@ export default function PortfolioContent() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
               { src: '/images/certifications/hubspot-marketing-hub.png', alt: 'HubSpot Marketing Hub Software Certified' },
+              { src: '/images/certifications/hubspot-email-marketing.png', alt: 'HubSpot Email Marketing Certified' },
+              { src: '/images/certifications/hubspot-reporting.png', alt: 'HubSpot Reporting Certified' },
               { src: '/images/certifications/google-analytics-certification.png', alt: 'Google Analytics Certification' },
               { src: '/images/certifications/ga4-linkedin-learning.png', alt: 'Google Analytics 4 (GA4) Essential Training — LinkedIn Learning' },
             ].map((cert, i) => (
@@ -1350,9 +1351,8 @@ export default function PortfolioContent() {
             </p>
           </div>
         </section>
-                {/* HubSpot Form (test embed) */}
-<Script src="https://js-eu1.hsforms.net/forms/embed/146914493.js" defer></script>
-<div class="hs-form-frame" data-region="eu1" data-form-id="ff939470-add3-4865-853b-3cc97d0ccba8" data-portal-id="146914493"></div>
+      </div>
+
       {/* Footer */}
       <footer className="mt-4 py-12 border-t border-gray-200 bg-white/50 backdrop-blur-sm">
         <div className="max-w-5xl mx-auto px-6 text-center">
