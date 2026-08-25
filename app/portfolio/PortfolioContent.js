@@ -1248,6 +1248,7 @@ export default function PortfolioContent() {
               { src: '/images/certifications/hubspot-reporting.png', alt: 'HubSpot Reporting Certified' },
               { src: '/images/certifications/google-analytics-certification.png', alt: 'Google Analytics Certification' },
               { src: '/images/certifications/ga4-linkedin-learning.png', alt: 'Google Analytics 4 (GA4) Essential Training — LinkedIn Learning' },
+              { src: '/images/certifications/semrush-ai-powered-marketer.png', alt: 'Semrush Academy — Become an AI-Powered Marketer Certificate' },
             ].map((cert, i) => (
               <Reveal key={cert.src} delay={i * 80}>
                 <div className="relative bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
