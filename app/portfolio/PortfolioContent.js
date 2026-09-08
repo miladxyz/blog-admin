@@ -4,7 +4,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Script from 'next/script';
+
 /* ---------------------------------------------------------
    Small building blocks
 --------------------------------------------------------- */
@@ -355,7 +355,7 @@ const caseStudies = [
     title: 'Growing with Komodaa',
     subtitle:
       "Joining as the first marketing hire, I helped an early-stage startup grow from a 5-person team to a 50-person scale-up serving over 2 million users.",
-    roadmap: ['Junior Growth Marketing Specialist', 'Growth Lead', 'Marketing Automation Manager'],
+    roadmap: ['Growth Marketing Specialist', 'CRM & Marketing Automation Specialist'],
     stats: [
       { value: '2M+', label: 'Women users' },
       { value: '500K', label: 'Monthly active users' },
@@ -386,8 +386,7 @@ const caseStudies = [
       },
       {
         title: 'My Role',
-        paragraphs: ["I joined Komodaa as the company's first marketing hire and progressed through multiple roles during my five-year journey:"],
-        list: ['Growth Marketing Specialist', 'Content Marketing Lead', 'Marketing Automation Manager'],
+        paragraphs: ["I joined Komodaa as the company's first marketing hire and progressed through multiple roles during my five-year journey."],
       },
       {
         title: 'Team Collaboration',
@@ -479,7 +478,7 @@ const caseStudies = [
     subtitle:
       'As the CRM & Marketing Automation Specialist at Komodaa, I designed the full lifecycle automation system from scratch, covering all key user moments from first sign-up to repeat purchase and re-engagement across a platform with 2.2M+ users.',
     stats: [
-      { value: '5', label: 'Automation flows designed' },
+      { value: '+5', label: 'Automation flows designed' },
       { value: '2.2M+', label: 'Users covered' },
     ],
     links: [
@@ -489,7 +488,7 @@ const caseStudies = [
       {
         title: 'Overview',
         paragraphs: [
-          '5 automation flows designed and implemented, including onboarding, buyer-seller messaging, abandoned cart, post-purchase, liked items, search-based recommendations, and RFM behavioral segmentation. Each journey below was designed end-to-end, from trigger logic and channel sequencing to fallback rules and escalation paths.',
+          '+5 automation flows designed and implemented, including onboarding, buyer-seller messaging, abandoned cart, post-purchase, liked items, search-based recommendations, and RFM behavioral segmentation. Each journey below was designed end-to-end, from trigger logic and channel sequencing to fallback rules and escalation paths.',
         ],
       },
       {
@@ -622,7 +621,7 @@ const caseStudies = [
   {
     id: 'eseminar',
     kind: 'Case Study',
-    title: 'Senior Lead Generation at Eseminar',
+    title: 'Lead Generation & Email Marketing Specialist at Eseminar',
     subtitle:
       'Driving B2B lead generation through multi-channel campaigns, marketing automation, and performance analytics for a platform with over 1 million users.',
     stats: [
@@ -774,7 +773,7 @@ const caseStudies = [
   {
     id: 'paper-trails',
     kind: 'Case Study',
-    title: 'Dutch Market Entry Strategy for Paper Trails',
+    title: 'Marketing Strategy for RoHaus.co (Paper Trails)',
     subtitle:
       'Developed a research-driven market entry and content strategy to help Paper Trails enter the Dutch market through customer research, strategic planning, and communication prototypes.',
     links: [
