@@ -947,6 +947,15 @@ const testimonials = [
     rotate: '-rotate-1',
     screenshot: '/images/recommendations/hans-van-gestel-recommendation.png',
   },
+  {
+    name: 'Alexandra Jammali',
+    role: 'Co-Founder of RoHaus & Co.',
+    context: 'Alexandra was a client Mehrnaz ran social media and marketing strategy for',
+    linkedin: 'https://www.linkedin.com/in/alexandra-jammali-baa25452/',
+    quote:
+      "Mehrnaz ran our socials this fall and was an absolute joy to work with. We didn't really have a marketing strategy, so she wrote one, mapped where our website was losing people, created a new funnel, and showed us how to fix it. Then she made the content herself, and her café reel was our most-watched post of the month! She's flexible, full of ideas, and great with everyone on the team. I'd highly recommend her for strategy and marketing.",
+    rotate: 'rotate-1',
+  },
 ];
 
 function Initials({ name }) {
