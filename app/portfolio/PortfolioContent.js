@@ -478,7 +478,6 @@ const caseStudies = [
     subtitle:
       'As the CRM & Marketing Automation Specialist at Komodaa, I designed the full lifecycle automation system from scratch, covering all key user moments from first sign-up to repeat purchase and re-engagement across a platform with 2.2M+ users.',
     stats: [
-      { value: '+5', label: 'Automation flows designed' },
       { value: '2.2M+', label: 'Users covered' },
     ],
     links: [
@@ -488,7 +487,7 @@ const caseStudies = [
       {
         title: 'Overview',
         paragraphs: [
-          '+5 automation flows designed and implemented, including onboarding, buyer-seller messaging, abandoned cart, post-purchase, liked items, search-based recommendations, and RFM behavioral segmentation. Each journey below was designed end-to-end, from trigger logic and channel sequencing to fallback rules and escalation paths.',
+          'Automation flows designed and implemented, including onboarding, buyer-seller messaging, abandoned cart, post-purchase, liked items, search-based recommendations, and RFM behavioral segmentation. Each journey below was designed end-to-end, from trigger logic and channel sequencing to fallback rules and escalation paths.',
         ],
       },
       {
@@ -918,14 +917,6 @@ const studentProjects = [
     externalHref: 'https://vlv-mehrnazbdm.my.canva.site/mehrnazbahramzadehv2',
     externalLabel: 'View Project',
   },
-  {
-    name: 'Professional & Personal Development Portfolio',
-    description:
-      "As part of my Master's programme at NHL Stenden, I developed a Professional & Personal Development Portfolio focused on skills directly relevant to the Dutch marketing job market.",
-    contributions: [],
-    externalHref: 'https://vlv-mehrnazbdm.my.canva.site/ppd-portfolio',
-    externalLabel: 'View Portfolio',
-  },
 ];
 
 const testimonials = [
@@ -1045,7 +1036,7 @@ export default function PortfolioContent() {
                 alt="Mehrnaz Bahramzadeh"
                 width={300}
                 height={300}
-                className="w-full h-full object-cover scale-150"
+                className="w-full h-full object-cover scale-125"
                 priority
               />
             </div>
@@ -1248,6 +1239,7 @@ export default function PortfolioContent() {
               { src: '/images/certifications/google-analytics-certification.png', alt: 'Google Analytics Certification' },
               { src: '/images/certifications/ga4-linkedin-learning.png', alt: 'Google Analytics 4 (GA4) Essential Training — LinkedIn Learning' },
               { src: '/images/certifications/semrush-ai-powered-marketer.png', alt: 'Semrush Academy — Become an AI-Powered Marketer Certificate' },
+              { src: '/images/certifications/braze-customer-engagement-specialist.jpg', alt: 'Braze — Customer Engagement Specialist Certificate' },
             ].map((cert, i) => (
               <Reveal key={cert.src} delay={i * 80}>
                 <div className="relative bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
