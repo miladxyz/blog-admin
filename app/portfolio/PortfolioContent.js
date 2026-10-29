@@ -949,8 +949,8 @@ const testimonials = [
   },
   {
     name: 'Alexandra Jammali',
-    role: 'Co-Founder of RoHaus & Co.',
-    context: 'Alexandra was a client Mehrnaz ran social media and marketing strategy for',
+    role: 'Founder of RoHaus & Co.',
+    context: 'Alexandra worked with Mehrnaz on the Paper Trails project',
     linkedin: 'https://www.linkedin.com/in/alexandra-jammali-baa25452/',
     quote:
       "Mehrnaz ran our socials this fall and was an absolute joy to work with. We didn't really have a marketing strategy, so she wrote one, mapped where our website was losing people, created a new funnel, and showed us how to fix it. Then she made the content herself, and her café reel was our most-watched post of the month! She's flexible, full of ideas, and great with everyone on the team. I'd highly recommend her for strategy and marketing.",
@@ -1242,13 +1242,13 @@ export default function PortfolioContent() {
           </Reveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
+              { src: '/images/certifications/braze-customer-engagement-specialist.jpg', alt: 'Braze — Customer Engagement Specialist Certificate' },
               { src: '/images/certifications/hubspot-marketing-hub.png', alt: 'HubSpot Marketing Hub Software Certified' },
               { src: '/images/certifications/hubspot-email-marketing.png', alt: 'HubSpot Email Marketing Certified' },
               { src: '/images/certifications/hubspot-reporting.png', alt: 'HubSpot Reporting Certified' },
               { src: '/images/certifications/google-analytics-certification.png', alt: 'Google Analytics Certification' },
               { src: '/images/certifications/ga4-linkedin-learning.png', alt: 'Google Analytics 4 (GA4) Essential Training — LinkedIn Learning' },
               { src: '/images/certifications/semrush-ai-powered-marketer.png', alt: 'Semrush Academy — Become an AI-Powered Marketer Certificate' },
-              { src: '/images/certifications/braze-customer-engagement-specialist.jpg', alt: 'Braze — Customer Engagement Specialist Certificate' },
             ].map((cert, i) => (
               <Reveal key={cert.src} delay={i * 80}>
                 <div className="relative bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
